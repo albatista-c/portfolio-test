@@ -1,1 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Anna Luisa Batista</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Corben:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Corben', serif;
+      background-color: #6CACE4;
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext y='25' font-size='24'%3E%F0%9F%90%A4%3C/text%3E%3C/svg%3E") 8 8, auto;
+    }
+
+    a, button {
+      cursor: pointer;
+    }
+
+    header {
+      background-color: #4d96d6;
+      padding: 24px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo {
+      color: white;
+      font-size: 1.4rem;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #FCBF49;
+      padding: 9px 14px;
+      border: 2px solid transparent;
+      border-radius: 20px;
+      transition: background-color 0.25s, color 0.25s, border-color 0.25s;
+      font-size: 0.9rem;
+    }
+
+    nav a:hover,
+    nav a[aria-current="page"] {
+      background-color: #FCBF49;
+      color: #24476b;
+      border-color: #FCBF49;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      width: min(1000px, 88%);
+      margin: 65px auto;
+    }
+
+    .page-heading {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .page-heading h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin-bottom: 15px;
+    }
+
+    .page-heading p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      align-items: stretch;
+    }
+
+    .contact-card {
+      background-color: rgba(255, 255, 255, 0.16);
+      border: 2px solid rgba(255, 255, 255, 0.35);
+      border-radius: 24px;
+      padding: 30px;
+      backdrop-filter: blur(5px);
+    }
+
+    .contact-card h2 {
+      color: #FCBF49;
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+
+    .contact-card p {
+      font-size: 0.98rem;
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 18px;
+      background-color: rgba(255, 255, 255, 0.13);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 14px;
+      color: white;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .contact-link:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-3px);
+    }
+
+    .contact-link .icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .contact-link strong {
+      display: block;
+      color: #FCBF49;
+      margin-bottom: 4px;
+    }
+
+    .contact-link span {
+      font-size: 0.9rem;
+    }
+
+    .note {
+      background-color: rgba(252, 191, 73, 0.15);
+      border-left: 4px solid #FCBF49;
+      padding: 16px 18px;
+      border-radius: 0 12px 12px 0;
+      margin-top: 22px;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 35px;
+      color: #24476b;
+      background-color: #FCBF49;
+      padding: 12px 22px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .back-link:hover {
+      transform: translateY(-3px);
+      background-color: #ffd477;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      margin-top: 60px;
+      background-color: rgba(36, 71, 107, 0.2);
+      font-size: 0.85rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cloud {
+      position: fixed;
+      z-index: 0;
+      color: rgba(255, 255, 255, 0.28);
+      font-size: 75px;
+      pointer-events: none;
+      animation: drift 30s linear infinite;
+    }
+
+    .cloud-one {
+      top: 20%;
+      left: -120px;
+    }
+
+    .cloud-two {
+      top: 65%;
+      left: -180px;
+      font-size: 100px;
+      animation-delay: -15s;
+      animation-duration: 38s;
+    }
+
+    @keyframes drift {
+      from {
+        transform: translateX(-10vw);
+      }
+      to {
+        transform: translateX(120vw);
+      }
+    }
+
+    .bubble {
+      position: fixed;
+      pointer-events: none;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.65);
+      animation: bubble-pop 0.8s ease-out forwards;
+      z-index: 10;
+    }
+
+    @keyframes bubble-pop {
+      0% {
+        transform: scale(0.2);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(1.8) translateY(-35px);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 700px) {
+      header {
+        justify-content: center;
+        text-align: center;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      main {
+        margin: 45px auto;
+      }
+
+      .contact-card {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="cloud cloud-one">☁</div>
+  <div class="cloud cloud-two">☁</div>
+
+  <header>
+    <a class="logo" href="index.html">Anna Luisa Batista</a>
+
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Project Gallery</a>
+      <a href="skills.html">Skills</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-heading">
+      <h1>Let's Connect!</h1>
+      <p>
+        Have a project idea, an opportunity to share, or just want to talk
+        about UX, human-centered design, or technology? I'd love to hear from you.
+      </p>
+    </section>
+
+    <section class="contact-layout">
+      <div class="contact-card">
+        <h2>Get in Touch</h2>
+        <p>
+          I'm always happy to connect with people who are passionate about
+          thoughtful design, user research, and creating technology that
+          makes people's lives better.
+        </p>
+
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:YOUR_EMAIL@example.com">
+            <span class="icon">✉️</span>
+            <span>
+              <strong>Email</strong>
+              YOUR_EMAIL@example.com
+            </span>
+          </a>
+
+          <a
+            class="contact-link"
+            href="https://www.linkedin.com/in/YOUR-LINKEDIN/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="icon">💼</span>
+            <span>
+              <strong>LinkedIn</strong>
+              Connect with me professionally
+            </span>
+          </a>
+
+          <a
+            class="contact-link"
+            href="https://github.com/albatista-c"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="icon">💻</span>
+            <span>
+              <strong>GitHub</strong>
+              Explore my projects
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <h2>A Little About What I Do</h2>
+        <p>
+          As a Human Centered Design and Engineering master's student at the
+          University of Washington, I'm interested in the intersection of
+          UX design, user research, linguistics, data science, and technology.
+        </p>
+        <p>
+          I enjoy approaching complex problems from multiple perspectives,
+          understanding people's needs, and turning research and insights
+          into clear, intuitive, and engaging experiences.
+        </p>
+        <p>
+          I'm especially interested in opportunities to collaborate on
+          meaningful projects and learn from people who care about
+          responsible, inclusive design.
+        </p>
+
+        <div class="note">
+          <strong>Currently in Seattle, WA</strong><br />
+          Open to connecting about UX opportunities, collaborations,
+          research, and human-centered technology.
+        </div>
+      </div>
+    </section>
+
+    <div style="text-align: center;">
+      <a class="back-link" href="index.html">← Back to Home</a>
+    </div>
+  </main>
+
+  <footer>
+    © 2026 Anna Luisa Batista. Built with HTML &amp; CSS.
+  </footer>
+
+  <script>
+    document.addEventListener("click", function (event) {
+      const bubble = document.createElement("div");
+      bubble.className = "bubble";
+
+      const size = Math.random() * 12 + 8;
+      bubble.style.width = size + "px";
+      bubble.style.height = size + "px";
+      bubble.style.left = event.clientX - size / 2 + "px";
+      bubble.style.top = event.clientY - size / 2 + "px";
+
+      document.body.appendChild(bubble);
+
+      setTimeout(function () {
+        bubble.remove();
+      }, 800);
+    });
+  </script>
+</body>
+</html>
